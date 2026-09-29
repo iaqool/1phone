@@ -1,0 +1,30 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { MobileWalletProvider } from '@wallet-ui/react-native-web3js'
+import { PropsWithChildren } from 'react'
+import { ClusterProvider, useCluster } from '@/components/cluster/cluster-provider'
+import { AppTheme } from '@/components/app-theme'
+
+const identity = { name: 'OnePhone' }
+const queryClient = new QueryClient()
+export function AppProviders({ children }: PropsWithChildren) {
+  return (
+    <AppTheme>
+      <QueryClientProvider client={queryClient}>
+        <ClusterProvider>
+          <SolanaProvider>{children}</SolanaProvider>
+        </ClusterProvider>
+      </QueryClientProvider>
+    </AppTheme>
+  )
+}
+
+// We have this SolanaProvider because of the network switching logic.
+// If you only connect to a single network, use MobileWalletProvider directly.
+function SolanaProvider({ children }: PropsWithChildren) {
+  const { selectedCluster } = useCluster()
+  return (
+    <MobileWalletProvider chain={selectedCluster.id} endpoint={selectedCluster.endpoint} identity={identity}>
+      {children}
+    </MobileWalletProvider>
+  )
+}

@@ -1,0 +1,23 @@
+{
+  "name": "onephone-sgt-verifier",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sgt": "npm run build --silent && node dist/src/cli.js",
+    "torque:preview": "npm run build --silent && node dist/src/torque-cli.js",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "npm run build --silent && node --experimental-test-isolation=none --test dist/tests/sgt.test.js dist/tests/torque.test.js",
+    "setup:local": "npm run build --silent && node dist/tests/setup-local.js",
+    "test:local": "npm run build --silent && node --experimental-test-isolation=none --test dist/tests/local.test.js"
+  },
+  "dependencies": {
+    "@solana/spl-token": "0.4.15",
+    "@solana/spl-token-group": "0.0.7",
+    "@solana/web3.js": "1.99.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.4",
+    "typescript": "5.9.3"
+  }
+}

@@ -1,0 +1,11 @@
+[features]
+resolution = true
+
+[programs.localnet]
+onephone = "B3mxNzFAtqWt14m6rr6ExRYeWw29V4vU8bvv9q17xR7N"
+
+[provider]
+cluster = "Localnet"
+
+[toolchain]
+anchor_version = "0.32.1"
