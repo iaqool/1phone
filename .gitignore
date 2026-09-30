@@ -8,3 +8,4 @@ target/
 *.log
 test-results/
 .local/
+website/.vercel/

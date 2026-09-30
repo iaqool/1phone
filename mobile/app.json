@@ -55,7 +55,10 @@
     },
     "extra": {
       "router": {},
-      "eas": {}
-    }
+      "eas": {
+        "projectId": "8f20a464-77ec-45e5-a6fc-2ff915038940"
+      }
+    },
+    "owner": "quatgelos-team"
   }
 }

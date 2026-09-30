@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101827" />
+    <meta name="description" content="OnePhone records one verifiable campaign registration per Solana Seeker Genesis Token." />
+    <meta property="og:title" content="OnePhone — one SGT, one campaign entry" />
+    <meta property="og:description" content="An onchain eligibility layer for Solana Seeker campaigns. Built as a hackathon prototype." />
+    <meta property="og:image" content="./logo.png" />
+    <title>OnePhone — one SGT, one campaign entry</title>
+    <link rel="icon" type="image/png" href="./logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="#top" aria-label="OnePhone, back to top">
+          <img src="./logo.png" alt="" width="38" height="38" />
+          <span>OnePhone</span>
+        </a>
+        <nav aria-label="Main navigation">
+          <a href="#how">How it works</a>
+          <a href="#status">Build status</a>
+          <a class="nav-code" href="https://github.com/iaqool/1phone" target="_blank" rel="noopener noreferrer">View code <span aria-hidden="true">↗</span></a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero-grid wrap">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"></span> SOLANA SEEKER / ELIGIBILITY</p>
+            <h1 id="hero-title">One SGT.<br />One entry.<br /><span>No guesswork.</span></h1>
+            <p class="hero-lede">OnePhone lets a campaign register each verified Seeker Genesis Token once. The rule lives on Solana, where participants and operators can inspect it.</p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#how">See the flow <span aria-hidden="true">↘</span></a>
+              <a class="button button-secondary" href="https://github.com/iaqool/1phone" target="_blank" rel="noopener noreferrer">Explore the code <span aria-hidden="true">↗</span></a>
+            </div>
+            <p class="hero-note">Hackathon prototype · local tests passed · no mainnet campaign yet</p>
+          </div>
+
+          <div class="console" aria-label="Illustrative OnePhone eligibility preview">
+            <div class="console-topline"><span>ONEPHONE / CAMPAIGN ENTRY</span><span class="console-dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
+            <div class="console-content">
+              <div class="console-kicker"><span class="pulse-dot" aria-hidden="true"></span> INTERACTIVE ILLUSTRATION</div>
+              <h2>Check a Seeker wallet</h2>
+              <p>Select a sample state to see the registration rule. This preview does not connect to a wallet.</p>
+              <div class="sample-picker" role="group" aria-label="Sample eligibility states">
+                <button type="button" class="sample-button" data-state="eligible" aria-pressed="true">Verified SGT</button>
+                <button type="button" class="sample-button" data-state="used" aria-pressed="false">Already used</button>
+                <button type="button" class="sample-button" data-state="missing" aria-pressed="false">No SGT</button>
+              </div>
+              <div class="result-card" id="sample-result" data-state="eligible" aria-live="polite">
+                <div class="result-icon" id="result-icon" aria-hidden="true">✓</div>
+                <div>
+                  <p class="result-label" id="result-label">ELIGIBILITY RESULT</p>
+                  <h3 id="result-title">Eligible to register</h3>
+                  <p id="result-description">This SGT can create one immutable receipt for this campaign.</p>
+                </div>
+              </div>
+              <div class="receipt-rule"><span>RECEIPT KEY</span><code>campaign + SGT mint</code></div>
+            </div>
+            <div class="console-footer"><span>SIMULATION ONLY</span><span>NO TRANSACTION SENT</span></div>
+          </div>
+        </div>
+        <div class="hero-bottom wrap"><span>Built for the Colosseum Crypto World's Fair</span><span>Scroll to inspect the rule <span aria-hidden="true">↓</span></span></div>
+      </section>
+
+      <section class="section section-how" id="how" aria-labelledby="how-title">
+        <div class="wrap">
+          <div class="section-heading"><p class="eyebrow eyebrow-dark">THE RULE</p><h2 id="how-title">A campaign slot tied to the token, not a wallet list.</h2><p>Wallet addresses can change. OnePhone keys the registration receipt to the SGT mint within a campaign, so the same token cannot take a second slot there.</p></div>
+          <div class="flow" aria-label="Three steps in the OnePhone flow">
+            <article class="flow-step"><span class="step-number">01 / VERIFY</span><div class="step-glyph" aria-hidden="true">◎</div><h3>Prove current ownership</h3><p>The client reads the wallet's SGT. The Solana program independently checks the token and the signer before accepting registration.</p></article>
+            <article class="flow-step"><span class="step-number">02 / RECORD</span><div class="step-glyph" aria-hidden="true">▣</div><h3>Write one receipt</h3><p>An immutable onchain receipt is created for that campaign and SGT mint. A repeat registration for the same token fails.</p></article>
+            <article class="flow-step"><span class="step-number">03 / PREPARE</span><div class="step-glyph" aria-hidden="true">↗</div><h3>Review recipients</h3><p>After the window closes, a read-only exporter prepares a proposed reward list. An operator still reviews and creates any Torque incentive.</p></article>
+          </div>
+          <p class="scope-note"><strong>What the rule means:</strong> one registration per SGT mint per campaign. It does not prove one unique human, and registration itself does not pay a reward.</p>
+        </div>
+      </section>
+
+      <section class="section section-status" id="status" aria-labelledby="status-title">
+        <div class="wrap status-grid">
+          <div class="status-intro"><p class="eyebrow">BUILD STATUS</p><h2 id="status-title">A working local prototype.<br />A live pilot is next.</h2><p>The source is public so judges can see the actual checks. We separate local evidence from device and partner integrations still to come.</p><a class="text-link" href="https://github.com/iaqool/1phone" target="_blank" rel="noopener noreferrer">Read the repository <span aria-hidden="true">↗</span></a></div>
+          <div class="status-list">
+            <div class="status-item"><span class="status-symbol done" aria-hidden="true">✓</span><div><h3>Onchain registration logic</h3><p>Anchor program and SGT verification tested locally, including repeat and concurrent attempts.</p></div><span class="status-tag">LOCAL TESTED</span></div>
+            <div class="status-item"><span class="status-symbol done" aria-hidden="true">✓</span><div><h3>Android client source</h3><p>Wallet flow and eligibility screen implemented; TypeScript, lint and Hermes export passed.</p></div><span class="status-tag">SOURCE READY</span></div>
+            <div class="status-item"><span class="status-symbol pending" aria-hidden="true">·</span><div><h3>Real Seeker and Torque pilot</h3><p>APK on a physical Seeker, mainnet registration and a live Torque payout remain unverified.</p></div><span class="status-tag pending-tag">NEXT STEP</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing" aria-labelledby="closing-title"><div class="wrap closing-inner"><div><p class="eyebrow eyebrow-dark">BUILD WITH US</p><h2 id="closing-title">Eligibility should be inspectable.</h2><p>Explore the implementation and follow the prototype as it moves from local tests to a real Seeker pilot.</p></div><a class="button button-dark" href="https://github.com/iaqool/1phone" target="_blank" rel="noopener noreferrer">Open GitHub <span aria-hidden="true">↗</span></a></div></section>
+    </main>
+
+    <footer class="site-footer"><div class="wrap footer-inner"><span>© 2026 OnePhone</span><span>Independent hackathon prototype. No Torque partnership or live payout claimed.</span><a href="#top">Back to top ↑</a></div></footer>
+  </body>
+</html>
