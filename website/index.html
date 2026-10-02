@@ -7,7 +7,7 @@
     <meta name="description" content="OnePhone records one verifiable campaign registration per Solana Seeker Genesis Token." />
     <meta property="og:title" content="OnePhone — one SGT, one campaign entry" />
     <meta property="og:description" content="An onchain eligibility layer for Solana Seeker campaigns. Built as a hackathon prototype." />
-    <meta property="og:image" content="./logo.png" />
+    <meta property="og:image" content="https://onephone.vercel.app/logo.png" />
     <title>OnePhone — one SGT, one campaign entry</title>
     <link rel="icon" type="image/png" href="./logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -52,6 +52,11 @@
               <div class="console-kicker"><span class="pulse-dot" aria-hidden="true"></span> INTERACTIVE ILLUSTRATION</div>
               <h2>Check a Seeker wallet</h2>
               <p>Select a sample state to see the registration rule. This preview does not connect to a wallet.</p>
+              <div class="sample-pass" aria-label="Example campaign pass">
+                <span class="pass-mark" aria-hidden="true">1</span>
+                <div class="pass-name"><span>EXAMPLE CAMPAIGN</span><strong>Seeker access pass</strong></div>
+                <span class="pass-limit">ONE SLOT <br />PER SGT</span>
+              </div>
               <div class="sample-picker" role="group" aria-label="Sample eligibility states">
                 <button type="button" class="sample-button" data-state="eligible" aria-pressed="true">Verified SGT</button>
                 <button type="button" class="sample-button" data-state="used" aria-pressed="false">Already used</button>
@@ -64,6 +69,7 @@
                   <h3 id="result-title">Eligible to register</h3>
                   <p id="result-description">This SGT can create one immutable receipt for this campaign.</p>
                 </div>
+                <span class="result-stamp" id="result-stamp" aria-hidden="true">OPEN</span>
               </div>
               <div class="receipt-rule"><span>RECEIPT KEY</span><code>campaign + SGT mint</code></div>
             </div>
